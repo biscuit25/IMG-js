@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign Up</title>
+	<link rel="stylesheet" type="text/css" href="styled.css">
+
+</head>
+<body>
+	<form name="my_form" onsubmit="return validateForm()" method="post">
+	<div class="mid">
+	<label>Name:</label>
+	<input type="text" name="name" id="name" onkeyup='name_check()'><span id="message-3"></span><br>
+	<label>Age:</label>
+	<input type="number" name="age" id="age" onkeyup='age_check()'><span id="message-4"></span><br>
+	<label>Phone Number:</label>
+	<input type="number" name="ph-no" id="ph-no" onkeyup='phone()'><span id="message-2"></span><br>
+	<label>Password:</label>
+	<input type="password" name="password" id="password"><br>
+	<label>Confirm Password:</label>
+	<input type="password" name="confirm_password" id="confirm_password" onkeyup ='check()'><span id="message"></span><br>
+	<label>Email:</label>
+	<input type="email" name="email" id="mail-id" onkeyup='match()'><span id="message-1"></span><br>
+	<label>City:</label>
+	<input type="text" name="city" id="city"><br>
+	<label>Gender:</label>
+	<input type="radio" name="gender" checked>Male<br>
+	<input type="radio" name="gender">Female<br>
+	<label>Educational Qualification</label>
+	<select name="edu">
+		<option value="b.tech">B.Tech</option>
+		<option value="m.tech">M.Tech</option>
+		<option value="b.sc">B.Sc</option>
+		<option value="m.sc">Integrated M.Sc</option>
+		<option value="m.tech">Integrated M.Tech</option>
+	</select><br>
+	<input type="submit" name="sign-up" value="SIGN UP">
+	</form>
+</div>
+<script>
+		function check() {
+  			if (document.getElementById('password').value ==
+    		document.getElementById('confirm_password').value) {
+    		document.getElementById('message').style.color = 'green';
+    	document.getElementById('message').innerHTML = 'Password matching';
+  		} else {
+    	document.getElementById('message').style.color = 'red';
+    	document.getElementById('message').innerHTML = 'Password does not match';
+  }
+}
+function name_check() {
+	var term = document.getElementById('name').value;
+	var re = /[a-zA-Z]+/;
+	if (re.test(term)) {
+		document.getElementById('message-3').style.color = 'green';
+		document.getElementById('message-3').innerHTML = 'Valid';
+	} else {
+		document.getElementById('message-3').style.color = 'red';
+		document.getElementById('message-3').innerHTML = 'Not Valid';
+	
+	}
+}
+
+function age_check() {
+	var term = document.getElementById('age').value;
+	
+	if (term>0 && term<=100) {
+		document.getElementById('message-4').style.color = 'green';
+		document.getElementById('message-4').innerHTML = 'Valid';
+	} else {
+		document.getElementById('message-4').style.color = 'red';
+		document.getElementById('message-4').innerHTML = 'Not Valid';
+	
+	}
+}
+
+
+function match() {
+	var term = document.getElementById('mail-id').value;
+	var re = /^\w+@[a-z]{2}(\.iitr\.ac\.in)$/;
+	if (re.test(term)) {
+		document.getElementById('message-1').style.color = 'green';
+		document.getElementById('message-1').innerHTML = 'Valid';
+	} else {
+		document.getElementById('message-1').style.color = 'red';
+		document.getElementById('message-1').innerHTML = 'Not Valid';
+	}
+}
+
+function phone() {
+	var term = document.getElementById('ph-no').value;
+	var re = /^[6789]\d{9}$/;
+	if (re.test(term)) {
+		document.getElementById('message-2').style.color = 'green';
+ 		document.getElementById('message-2').innerHTML = 'Valid';
+	} else { 
+		document.getElementById('message-2').style.color = 'red';
+		document.getElementById('message-2').innerHTML = 'Not Valid';}
+	
+}
+
+function validateForm() {
+	var http = new XMLHttpRequest();
+            http.onreadystatechange=function(){
+                if(this.status==200 && this.readyState==4)
+                    alert(this.responseText);
+            }
+            http.open("POST","http://172.25.55.8:3000/my_machau_api",true)
+            http.setRequestHeader("Content-type", "application/json")
+            var obj = { email: document.getElementById('mail-id').value}
+            http.send(JSON.stringify(obj));
+
+  var x = document.forms["my_form"]["name"].value;
+  if (x == "") {
+    alert("Name must be filled out");
+    return false;
+  }
+  var x = document.forms["my_form"]["age"].value;
+  if (x == "") {
+  	document.getElementById('age').style.color = 'red';
+    alert("Age must be filled out");
+    return false;
+  }
+  var x = document.forms["my_form"]["ph-no"].value;
+  if (x == "") {
+  	document.getElementById('ph-no').style.color = 'red';
+    alert("Phone Number must be filled out");
+    return false;
+  }
+  var x = document.forms["my_form"]["password"].value;
+  if (x == "") {
+  	document.getElementById('password').style.color = 'red';
+    alert("Password must be filled out");
+    return false;
+  }
+  var x = document.forms["my_form"]["confirm_password"].value;
+  if (x == "") {
+  	document.getElementById('confirm_password').style.color = 'red';
+    alert("Confirm Password must be filled out");
+    return false;
+  }
+  var x = document.forms["my_form"]["mail-id"].value;
+  if (x == "") {
+  	document.getElementById('mail-id').style.color = 'red';
+    alert("Email must be filled out");
+    return false;
+  }
+  var x = document.forms["my_form"]["city"].value;
+  if (x == "") {
+  	document.getElementById('city').style.color = 'red';
+    alert("City must be filled out");
+    return false;
+  }
+}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+.mid {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 35%;
+	padding-top: 5%;
+	padding-bottom: auto;
+	font-family: sans-serif;
+	background-color: rgb(100%,90%,82%);
+}
+
+label {
+	font-weight: bold;
+	color: black;
+}
+
+body {
+	margin: 0%;
+	padding: 0%;
+}
+input[type = submit] {
+	background: rgba(0,0,0,0);
+	border: 1px solid black;
+	color: black;
+	font-size: 105%;
+	font-family: sans-serif;
+	margin-right: 37%;
+	margin-left: 37%;
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
