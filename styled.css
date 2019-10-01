@@ -6,7 +6,7 @@
 	padding-top: 5%;
 	padding-bottom: auto;
 	font-family: sans-serif;
-	background-color: rgb(100%,90%,82%);
+	background-image: url("images/background.jpeg");
 }
 
 label {
@@ -18,8 +18,9 @@ body {
 	margin: 0%;
 	padding: 0%;
 }
-input[type = submit] {
-	background: rgba(0,0,0,0);
+
+input[type=submit] {
+	background: rgba(0, 0, 0, 0);
 	border: 1px solid black;
 	color: black;
 	font-size: 105%;
