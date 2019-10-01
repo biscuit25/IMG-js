@@ -13,7 +13,7 @@ HTML, JavaScript, REGEX
 ## Usage
 
 ```REGEX
-Just open the index.html in a browser and login with proper
+Just open the form.html in a browser and login with proper
 details with all specifications. You will be prompted an 
 error where you don't follow proper guidelines
 ```
